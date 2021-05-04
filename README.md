@@ -1,4 +1,4 @@
--make sure tha you have STS (Spring Tools Suite)
+-make sure that you have STS (Spring Tools Suite)
 
 -link to download it :https://spring.io/tools
 
