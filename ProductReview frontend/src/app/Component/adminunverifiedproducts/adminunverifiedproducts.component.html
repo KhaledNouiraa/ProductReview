@@ -1,0 +1,54 @@
+<div role="combobox" flex="column" style="margin-left: 23%;">
+
+
+
+    <div *ngFor="let product of products">
+        <div>
+            <mat-card class="matcard2">
+                <div class="cartdetails" fxLayout="row" fxLayoutAlign="start start">
+                    <img class="productimg" src="assets\productimage\{{product.image}}" />
+
+                    <div class="productdetails">
+                        <div class="producttitle" style="word-wrap: break-word;">
+                            {{product.productName}}
+                        </div>
+
+                        <div class="sub" style="word-wrap: break-word;">
+                            {{product.authorName}}
+                        </div>
+
+                        <div style="
+                  margin-bottom: 11%;
+                  font: Bold 18px/15px Lato;
+                  margin-left: -25px;
+                ">
+
+                            Rs. {{product.price}}
+                        </div>
+
+                    </div>
+                </div>
+                <div style="margin-bottom: 8px; margin-left: 27px; margin-top:20px; font: Bold 18px/15px Lato;">
+                    Description:
+                </div>
+                <div style="margin-left: 27px;">{{product.productDetails}}</div>
+
+                <!-- </div> -->
+
+                <div fxLayout="row wrap" fxLayoutAlign="end end">
+                    <button  id="approveBtn" mat-raised-button class="button" (click)="approveProducts(product.productId,'approved')">
+              APPROVE
+            </button>
+                    <button id="rejectBtn" mat-raised-button class="button" style="background-color: #f44336;" (click)="rejectProducts(product.productId,'rejected')">
+              REJECT
+            </button>
+
+
+                </div>
+
+            </mat-card>
+            <br />
+        </div>
+    </div>
+
+</div>

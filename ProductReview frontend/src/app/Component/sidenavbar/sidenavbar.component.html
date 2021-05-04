@@ -1,0 +1,31 @@
+<div class="container" *ngIf="isAdmin">
+  <div>
+
+    <button id="adminProductBtn" mat-button class="navbutton" (click)="products()">
+      
+      <span class= "icon-label" >Products</span>
+      </button>
+    <button id="sellerProductBtn" mat-button class="navbutton" (click)="sellerProducts()">
+
+      
+       <span class= "icon-label" >Seller</span>
+       </button>
+
+
+         <!-- <button mat-button class="navbutton">
+        
+          <span class="icon-label">Reviews</span>
+         </button> -->
+</div>
+</div>
+<div class="container" *ngIf="isSeller">
+    <div>
+        <button mat-raised-button class="navButton"  (click)="sellerProduct()" type="submit">
+        Products</button>
+      </div>
+      <div>
+        <button mat-raised-button class="navButton"   (click)="orderStatus()" type="submit">
+        Order</button>
+      </div>
+</div>
+     

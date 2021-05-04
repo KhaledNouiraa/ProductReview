@@ -1,0 +1,57 @@
+<div *ngIf="sellerProducts && !orderProducts">
+
+<div class="main-container">
+    <div class="container">
+        <div class="addIcon"  style="display: flex; justify-content: flex-end; margin: 2rem 0.5rem;" *ngIf="sellerProducts">
+            <mat-icon class="icon-display" id="addBtn" (click)="addProduct()" matTooltip="Add Product">add</mat-icon>
+        </div>
+        <div class="alert alert-danger text-justify" *ngIf="products.length==0">Nothing to display please add some products By clicking on Add button</div>
+
+        <div class="list-products">
+            <div *ngFor=" let product of products | productsearchpipe:productSearch">
+                <mat-card style="display: flex;flex-direction: row; width: auto; padding: 1rem;" matTooltip="{{ product.productDetails }}">
+
+                    <div>
+                        <mat-card-title style="padding: 1rem;" (click)="openImageDialog(product.productId)" matTooltip="Update Image">
+                            <img src="assets\productimage\{{product.image}}" style="height: 13rem; width: 10rem; padding: 16px 0px 16px 16px ;" />
+                        </mat-card-title>
+                    </div>
+                    <div >
+                        <mat-card-content style="display: flex;flex-direction: column;flex-wrap: nowrap;width: 25rem; margin-top: 10px; margin-bottom: 0px;">
+                            <div class="productname">Product Name : {{ product.productName }}</div>
+                            <div class="authorname">Author name : {{ product.authorName }}</div>
+                            <div class="price">Rs. {{ product.price }}</div>
+                            <div class="status" *ngIf="product.status == 'OnHold'">Status : <label style="color: yellow;">{{ product.status }}</label> </div>
+                            <div class="status" *ngIf="product.status == 'approved'">Status : <label style="color: green;">{{ product.status }}</label> </div>
+                            <div class="status" *ngIf="product.status == 'rejected'">Status : <label style="color: red;">{{ product.status }}</label> </div>
+                            <div class="description">Description : {{ product.productDetails }}</div>
+
+                            <div style="display: flex; justify-content: flex-start; margin-left: 10px;">
+                                <div style="margin-left: 10px;">
+                                    <button id="editBtn" matTooltip="Edit Product" style="width: 5rem; outline: none;color: white;border-radius: 0px; background-color: rgba(131, 4, 4, 0.8);" (click)="editProduct(product)" mat-button>
+                                        Edit
+                                    </button>
+                                </div>
+                                <div style="margin-left: 10px;">
+                                    <button matTooltip="Delete Product" id="deleteBtn" style="width: 5rem; color: white; outline: none; border-radius: 0px; background-color: rgba(131, 4, 4, 0.8);" (click)="deleteProduct(product.productId)" mat-button>
+                                        DELETE
+                                    </button>
+                                </div>
+                                <div style="margin-left: 10px;" *ngIf="product.status != 'approved' && product.status != 'OnHold' ">
+                                    <button matTooltip="Verify Product" id="verifyBtn" style="width: 5rem; color: white; outline: none; border-radius: 0px; background-color: rgba(131, 4, 4, 0.8);" (click)="verifyProduct(product.productId)" mat-button>
+                                        Verify
+                                    </button>
+                                </div>
+                            </div>
+                        </mat-card-content>
+                    </div>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<div *ngIf="!sellerProducts && orderProducts">
+    <app-orderstatus></app-orderstatus>
+</div>

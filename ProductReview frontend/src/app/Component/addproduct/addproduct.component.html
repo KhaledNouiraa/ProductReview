@@ -1,0 +1,65 @@
+<div class="container">
+
+
+    <div style="background-color: #A03037; width: 100%; margin-bottom: 10px;">
+        <h2 style="color: white; text-align: center;padding-top: 10px;">Add Product</h2>
+    </div>
+
+
+    <form  >
+        <div class="product-details">
+            <mat-form-field appearance="outline"   >
+                <mat-label>Product Name</mat-label>
+                <mat-error *ngIf="productName.invalid"> {{productNameValidation()}}</mat-error>
+                <input type="name" matInput placeholder="Enter your Productname" id="productName" [formControl]="productName"   [(ngModel)]="addproducts.productName"  autocomplete="off" required>
+                <mat-icon matSuffix style="color: grey;">product</mat-icon>
+            </mat-form-field>
+        </div>
+         
+        <div class="product-details">
+            <mat-form-field appearance="outline" >
+                <mat-label >Product Authour</mat-label>
+                <mat-error *ngIf="authorName.invalid"> {{productAuthorValidation()}}</mat-error>
+                <input type="name" matInput placeholder="Enter your Productauthour" id="productAuthor"  [(ngModel)]="addproducts.authorName" [formControl]="authorName"  autocomplete="off" required>
+                <mat-icon matSuffix style="color: grey;">person</mat-icon> 
+            </mat-form-field>
+        </div>
+
+
+        <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px" >
+            <mat-form-field appearance="outline" class="example-full-width3">
+                <mat-label >Product Price</mat-label>
+                <mat-error *ngIf="price.invalid"> {{productPriceValidation()}}</mat-error>
+                <input type="number" matInput placeholder=" price" id="price" [(ngModel)]="addproducts.price" [formControl]="price" autocomplete="off" required>
+                <mat-icon matSuffix style="color: grey;"> 
+                    attach_money
+                </mat-icon>
+            </mat-form-field>
+        
+            <mat-form-field appearance="outline" class="example-full-width4" >
+                <mat-label>Product Quantity</mat-label>
+                <mat-error *ngIf="noOfProducts.invalid"> {{noOfProductsValidation()}}</mat-error>
+                <input type="text"   matInput placeholder="No Of Products" id="qty" [(ngModel)]="addproducts.noOfProducts" [formControl]="noOfProducts" autocomplete="off" required>
+             
+            </mat-form-field>
+        </div>
+      
+        <div class="product-details">
+            <mat-form-field appearance="outline"  >
+                <mat-label>Product Description</mat-label>
+                <mat-error *ngIf="productDetails.invalid"> {{productDescriptionValidation()}}</mat-error>
+                <input type="text"  id="desc" matInput placeholder="Enter your productDescription" [(ngModel)]="addproducts.productDetails" [formControl]="productDetails"autocomplete="off" required>
+                <mat-icon matSuffix style="color: grey;">edit</mat-icon>
+            </mat-form-field>
+        </div>
+        
+        <div class="product-details">
+            <input type="file" name="image" (change)="onSelectedImage($event)" />
+        </div>
+        <div class="submit">
+            <button mat-button id="submit" [disabled]=" productName.invalid || authorName.invalid || price.invalid || noOfProducts.invalid" type="submit" style="border: none;border-radius: 0px; outline: none;" (click)="onClickaddProduct()">
+                Add Product
+            </button>
+        </div>
+    </form>
+</div>

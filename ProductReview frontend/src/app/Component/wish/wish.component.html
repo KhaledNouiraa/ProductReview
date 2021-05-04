@@ -1,0 +1,77 @@
+<app-toolbar></app-toolbar>
+<br><br>
+<div role="combobox" flex="column" style="margin-left: 16%;">
+    <mat-card class="matcard2">
+        <div>My WishList product&nbsp;({{ countproduct }}) </div><br><br>
+        <!-- <div >My WishList&nbsp;({{ countproduct }})</div> -->
+        <div *ngFor="let product of WishListdetails">
+            <div *ngIf="product != null">
+                <div class="cartdetails" style="margin-left: 2%;" fxLayout="row" fxLayoutAlign="start start">
+                    <!-- <img class="productimg" src="assets/images/Image 11@2x.png" /> -->
+                    <img class="productimg" src="assets\productimage\{{product.image}}" />
+                    <div class="productdetails">
+                        <div class="producttitle" style="word-wrap: break-word;">
+                            <!-- Don't Make Me Think -->
+                            {{ product.productName }}
+                        </div>
+
+                        <div class="sub" style="word-wrap: break-word;">
+                            {{ product.authorName }}
+                        </div>
+                        <div class="price" style="word-wrap: break-word;">
+                            <!-- Rs. 1500 -->
+                            Rs. {{ product.price }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div fxLayoutAlign="start end" fxLayout="row wrap" style="margin-left: 12%; margin-bottom: 2%;">
+                <button
+            fxLayout="column"
+            fxLayoutAlign="end start"
+            style="
+              justify-content: flex-center;
+              margin-bottom: 22px;
+              background-color: white;
+              border: none;
+              outline: none;
+              cursor: pointer;
+            "
+            class="grab"
+            (click)="addToWish(product.productId)"
+    >
+            <div style="font: 18px/15px Lato; flex-wrap: wrap;">
+              &nbsp; Add To Cart
+            </div>
+          </button> 
+
+                <button
+            style="
+              margin-bottom: 22px;
+              background-color: white;
+              border: none;
+              outline: none;
+              color: red;
+              cursor: pointer;
+            "
+            class="grab"
+            (click)="remoiveFromWish(product.productId)"
+          >
+            <div style="font: 18px/15px Lato; flex-wrap: wrap;" >
+              &nbsp; Remove
+            </div>
+          </button>
+                <button mat-raised-button class="button2" (click)="addtobag(product.productId)">
+            AddTocart
+          </button>
+                <button mat-raised-button class="button" (click)="remoiveFromWish(product.productId)">
+            Remove
+          </button>
+            </div>
+        </div>
+    </mat-card>
+</div>
+<br><br>
+<div style='margin-top: 330px;'>
+    <app-footer></app-footer>
+</div>
