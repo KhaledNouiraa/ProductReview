@@ -1,11 +1,15 @@
 -make sure tha you have STS (Spring Tools Suite)
+
 -link to download it :https://spring.io/tools
+
 -open STS and Import project. 
+
 -wait untill Maven update
 
 -change the Mysql password in properties file
 
 -update you gmail credential(email & password) in enviroments
+
 -Run the sts
 
 -check all the end points: http://localhost:8080/swagger-ui.html#/
