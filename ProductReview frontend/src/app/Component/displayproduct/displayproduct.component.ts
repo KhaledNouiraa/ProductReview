@@ -44,7 +44,8 @@ export class DisplayproductComponent implements OnInit {
                private wishlistService: WishlistService) { }
 
   ngOnInit() {
-    this.getallApprovedProducts();
+    this.getallProducts();
+    //this.getallApprovedProducts();
     this.getSearchProductData();
     this.leng = sessionStorage.length;
     for (let i = 0; i < sessionStorage.length; i++) {
@@ -75,12 +76,30 @@ export class DisplayproductComponent implements OnInit {
     }
 }
 
+getallProducts() {
+  this.allProductServiceMethod();
+}
+
+allProductServiceMethod() {
+    this.service.getallProducts().subscribe((response: any) => {
+    console.log(response);
+    console.log('Products are the' + response.obj);
+    this.productList = response.obj.content;
+    this.size = response.obj.totalElements;
+    this.CurrentPageNo = response.obj.pageable.pageNumber;
+    this.totalPage = new Array(response.obj.totalPages);
+    console.log('Total pages is: ' + this.totalPage);
+    console.log('total products are ' + this.size);
+    console.log('curret page number is ' + this.CurrentPageNo);
+    console.log('Products are  ', this.productList.length);
+  });
+}
   getallApprovedProducts() {
     this.approvedProductServiceMethod(this.page, 'product_id', 'asc');
   }
 
   approvedProductServiceMethod(page ?: number, order?: string, sortby?: string) {
-    this.service.getAllApprovedProductByPage(page, order, sortby).subscribe((response: any) => {
+      this.service.getAllApprovedProductByPage(page, order, sortby).subscribe((response: any) => {
       console.log(response);
       console.log('Products are the' + response.obj);
       this.productList = response.obj.content;
