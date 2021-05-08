@@ -30,7 +30,6 @@ public class UserController {
 	@Autowired
 	private UserServices service;
 	
-
 	@Autowired
 	private JwtGenerator generate;
 

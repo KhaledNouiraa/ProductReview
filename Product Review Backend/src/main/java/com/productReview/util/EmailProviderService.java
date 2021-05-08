@@ -55,11 +55,11 @@ public class EmailProviderService{
 
 			mimeMessage.addHeader("Content-Transfer-Encoding", "8bit");
 
-			mimeMessage.setFrom(new InternetAddress(fromEmail, "Productstore"));
+			mimeMessage.setFrom(new InternetAddress(fromEmail, "Product Review Application"));
 
 			mimeMessage.setRecipient(Message.RecipientType.TO, new InternetAddress(emailContact));
 
-			mimeMessage.setReplyTo(InternetAddress.parse(" u cannot sandeep.rayala14@gmial.com",false));
+			mimeMessage.setReplyTo(InternetAddress.parse(" u cannot Sm5r@hotmail.com",false));
 
 			mimeMessage.setSubject(emailSubject);
 

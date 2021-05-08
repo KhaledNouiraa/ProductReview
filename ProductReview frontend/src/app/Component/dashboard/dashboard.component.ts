@@ -29,7 +29,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.role = localStorage.getItem('role');
-    this.setTitle('Productstore');
+    this.setTitle('Product Review');
     console.log('role check toolbar', this.role);
     if (this.role === 'admin') {
      this.isAdmin = true;

@@ -28,7 +28,7 @@ export class LoginComponentComponent implements OnInit {
               private matSnackBar: MatSnackBar,
               private titleService: Title
     ) {
-      this.setTitle('Productstore | Login');
+      this.setTitle('Product Review | Login');
 
   }
   handleError(error: { error: any; }) {
